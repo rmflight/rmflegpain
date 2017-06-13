@@ -1,8 +1,9 @@
 Package: rmflegpain
-Title: What the Package Does (one line, title case)
+Title: Tracking and analyzing leg pain incidince
 Version: 0.0.0.9000
 Authors@R: person(given = c("Robert", "M"), family = "Flight", email = "rflight79@gmail.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Description: Provides data and analysis of personal joint pain tracked in
+  conjunction with the wearing of shorts or pants in my air conditioned office.
 Depends: R (>= 3.4.0)
 License: MIT
 Encoding: UTF-8
