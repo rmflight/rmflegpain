@@ -5,7 +5,7 @@ long pants in my air conditioned office.
 
 ## Tracking
 
-The `R` code used to generate my tracking spreadsheet is [here](), and the
+The `R` code used to generate my tracking spreadsheet is [here](https://github.com/rmflight/rmflegpain/blob/master/vignettes/Tracking%20Spreadsheet.Rmd), and the
 actual Google Sheet is [here](https://docs.google.com/spreadsheets/d/1jkdDm-gkuY4nMjQ2AD8h_A8Qfb0DfzyvBlsvGF1wbaw/edit?usp=sharing).
 
 ## Analysis
