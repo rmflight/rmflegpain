@@ -1,0 +1,54 @@
+---
+title: "Tracking Spreadsheet"
+author: "Robert M Flight"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Tracking Spreadsheet}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup}
+library(lubridate)
+library(dplyr)
+```
+
+
+## Creating the Tracking Spreadsheet
+
+I need some way to randomize the days, and then keep track of what I'm feeling
+in the results.
+
+So I will create a CSV that covers up to 50 days (40 after removing weekends),
+and will randomly assign to wear shorts or pants.
+
+I will also track what time I get to the office, when I leave, consumption
+of tomatoes (I'm pretty sure I have a tomato sensitivity), and whether or not
+I believe that day is a migraine day (migraines seem to make joints more sensitive
+to pain in general).
+
+```{r setup_dates}
+study_frame <- data.frame(dates = (today() - 2) + seq(1, 50))
+study_frame$wday <- wday(study_frame$dates)
+study_frame <- filter(study_frame, !(wday %in% c(1, 7)))
+```
+
+```{r assign_pants_shorts}
+study_frame$PantsOrShorts <- sample(c("Pants", "Shorts"), nrow(study_frame), replace = TRUE)
+# replace the first two days, as I've already begun
+study_frame$PantsOrShorts[c(1, 2)] <- c("Pants", "Shorts")
+```
+
+```{r add_other_columns}
+study_frame$time_in <- 0
+study_frame$time_out <- 0
+study_frame$migraine <- "No"
+study_frame$tomatos <- "No"
+study_frame$knee_pain <- "No"
+```
+
+```{r}
+write.table(study_frame, file = "study_spreadsheet.csv", row.names = FALSE, col.names = TRUE, sep = ",")
+```
+
